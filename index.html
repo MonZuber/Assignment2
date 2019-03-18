@@ -1,8 +1,9 @@
 <html>
 <head>
+ <meta charset="utf-8">
     <title>The Golden Finch</title>
     <script src="./js/phaser.js"></script>
-	<script type ="text/javascript" src="https://24.16.255.56:8888/socket.io/socket.io.js"></script>
+	<script type ="text/javascript" src="http://24.16.255.56:8888/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="./js/main.js"></script>
 </head>
 <body>
@@ -10,5 +11,8 @@
         Press <font color="orange">S</font> to save current state,
         Press <font color="green">L</font> to load state from Dr. Marriot's database
     </h4>
+	 <div id = "text"></div>
+    <button id="save" type="button">Save</button>
+    <button id="load" type="button">Load</button>
 </body>
 </html>
