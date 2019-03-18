@@ -1,15 +1,170 @@
-
-var socket = io.connect("https://24.16.255.56:8888");
-var game;
-var group;
-var leader;
-var game = new Phaser.Game(1350, 640, Phaser.CANVAS, 'playground', { preload: preload, create: create, update: update});
+	
+window.onload = function(){
+var socket = io.connect("http://24.16.255.56:8888");
 
 socket.on("load", function (data) {
     console.log('loaded data');
     console.log(data);
   
 });
+
+var text = document.getElementById("text");
+  var saveButton = document.getElementById("save");
+  var loadButton = document.getElementById("load");
+  
+  saveButton.onclick = function () {
+    console.log("save");
+    text.innerHTML = "Saved."
+    socket.emit("save", {studentname: "Moneer Marouf", statename: "gamestate-1", data: "bye"});
+	};
+	
+	loadButton.onclick = function () {
+    console.log("load");
+    text.innerHTML = "Loaded."
+    socket.emit("load", { studentname: "Moneer Marouf", statename: "gamestate-1"});
+        loadState(data.data);
+    };
+
+/*if (saveKey.isDown) {
+        var data = saveState();
+        console.log('Saved data: ' + data);
+        socket.emit("save", {studentname: "Moneer Marouf", statename: "gamestate-1", data: "bye"});
+	}
+	
+	else if (loadKey.isDown) {
+		console.log("load");
+        socket.emit("load", { studentname: "Moneer Marouf", statename: "gamestate-1"});
+        // loadState(data.data);
+    }
+	*/
+function loadState(state) {
+
+    // load the state of entities from Dr. Marriott's  legendary database
+    // finch
+     leader.position.x = state.leader.position.x;
+    leader.position.y = state.leader.position.y;
+    leader.destination.x = state.leader.destination.x;
+    leader.destination.y = state.leader.destination.y;
+    leader.speed = state.leader.speed;
+	
+    // player 1
+    group.getChildAt(0).x = state.player1.position.x;
+    group.getChildAt(0).y = state.player1.position.y;
+    group.getChildAt(0).destination.x = state.player1.destination.x;
+    group.getChildAt(0).destination.y = state.player1.destination.y;
+    group.getChildAt(0).speed = state.player1.speed;
+
+    // player 2
+    group.getChildAt(1).x = state.player2.position.x;
+    group.getChildAt(1).y = state.player2.position.y;
+    group.getChildAt(1).destination.x = state.player2.destination.x;
+    group.getChildAt(1).destination.y = state.player2.destination.y;
+    group.getChildAt(1).speed = state.player2.speed;
+
+    // player 3
+    group.getChildAt(2).x = state.player3.position.x;
+    group.getChildAt(2).y = state.player3.position.y;
+    group.getChildAt(2).destination.x = state.player3.destination.x;
+    group.getChildAt(2).destination.y = state.player3.destination.y;
+    group.getChildAt(2).speed = state.player3.speed;
+
+    // player 4
+    group.getChildAt(3).x = state.player4.position.x;
+    group.getChildAt(3).y = state.player4.position.y;
+    group.getChildAt(3).destination.x = state.player4.destination.x;
+    group.getChildAt(3).destination.y = state.player4.destination.y;
+    group.getChildAt(3).speed = state.player4.speed;
+
+    // player 5
+    group.getChildAt(4).x = state.player5.position.x;
+    group.getChildAt(4).y = state.player5.position.y;
+    group.getChildAt(4).destination.x = state.player5.destination.x;
+    group.getChildAt(4).destination.y = state.player5.destination.y;
+    group.getChildAt(4).speed = state.player5.speed;
+
+    // player 6
+    group.getChildAt(5).x = state.player6.position.x;
+    group.getChildAt(5).y = state.player6.position.y;
+    group.getChildAt(5).destination.x = state.player6.destination.x;
+    group.getChildAt(5).destination.y = state.player6.destination.y;
+    group.getChildAt(5).speed = state.player6.speed;
+
+    // player 7
+    group.getChildAt(6).x = state.player7.position.x;
+    group.getChildAt(6).y = state.player7.position.y;
+    group.getChildAt(6).destination.x = state.player7.destination.x;
+    group.getChildAt(6).destination.y = state.player7.destination.y;
+    group.getChildAt(6).speed = state.player7.speed;
+
+    // player 8
+    group.getChildAt(7).x = state.player8.position.x;
+    group.getChildAt(7).y = state.player8.position.y;
+    group.getChildAt(7).destination.x = state.player8.destination.x;
+    group.getChildAt(7).destination.y = state.player8.destination.y;
+    group.getChildAt(7).speed = state.player8.speed;
+
+    // player 9
+    group.getChildAt(8).x = state.player9.position.x;
+    group.getChildAt(8).y = state.player9.position.y;
+    group.getChildAt(8).destination.x = state.player9.destination.x;
+    group.getChildAt(8).destination.y = state.player9.destination.y;
+    group.getChildAt(8).speed = state.player9.speed;
+
+    // player 10
+    group.getChildAt(9).x = state.player10.position.x;
+    group.getChildAt(9).y = state.player10.position.y;
+    group.getChildAt(9).destination.x = state.player10.destination.x;
+    group.getChildAt(9).destination.y = state.player10.destination.y;
+    group.getChildAt(9).speed = state.player10.speed;
+	
+	
+	 // player 11
+    group.getChildAt(10).x = state.player11.position.x;
+    group.getChildAt(10).y = state.player11.position.y;
+    group.getChildAt(10).destination.x = state.player11.destination.x;
+    group.getChildAt(10).destination.y = state.player11.destination.y;
+    group.getChildAt(10).speed = state.player11.speed;
+	
+	
+	 // player 12
+    group.getChildAt(11).x = state.player12.position.x;
+    group.getChildAt(11).y = state.player12.position.y;
+    group.getChildAt(11).destination.x = state.player12.destination.x;
+    group.getChildAt(11).destination.y = state.player12.destination.y;
+    group.getChildAt(11).speed = state.player12.speed;
+
+	
+	 // player 13
+    group.getChildAt(12).x = state.player13.position.x;
+    group.getChildAt(12).y = state.player13.position.y;
+    group.getChildAt(12).destination.x = state.player13.destination.x;
+    group.getChildAt(12).destination.y = state.player13.destination.y;
+    group.getChildAt(12).speed = state.player13.speed;
+	
+	 // player 14
+    group.getChildAt(13).x = state.player14.position.x;
+    group.getChildAt(13).y = state.player14.position.y;
+    group.getChildAt(13).destination.x = state.player14.destination.x;
+    group.getChildAt(13).destination.y = state.player14.destination.y;
+    group.getChildAt(13).speed = state.player14.speed;
+	
+	 // player 15
+    group.getChildAt(14).x = state.player15.position.x;
+    group.getChildAt(14).y = state.player15.position.y;
+    group.getChildAt(14).y = state.player15.position.y;
+    group.getChildAt(14).destination.x = state.player15.destination.x;
+    group.getChildAt(14).destination.y = state.player15.destination.y;
+    group.getChildAt(14).speed = state.player15.speed;
+	
+}
+
+	};
+var game;
+var group;
+var leader;
+var game = new Phaser.Game(1350, 640, Phaser.CANVAS, 'playground', { preload: preload, create: create, update: update});
+
+
 
 function preload() {
     game.load.image('sky', './assets/sky.png');
@@ -62,7 +217,7 @@ function update() {
 		
 		
 	
-	if (saveKey.isDown) {
+	/*if (saveKey.isDown) {
         var data = saveState();
         console.log('Saved data: ' + data);
         socket.emit("save", {studentname: "Moneer Marouf", statename: "gamestate-1", data: "bye"});
@@ -73,6 +228,7 @@ function update() {
         socket.emit("load", { studentname: "Moneer Marouf", statename: "gamestate-1"});
         // loadState(data.data);
     }
+	*/
 }
 
 //creates a crow (15) to follow the finch
@@ -248,6 +404,7 @@ function saveState() {
 
     return state;
 }
+/*
 
 function loadState(state) {
 
@@ -369,4 +526,4 @@ function loadState(state) {
     group.getChildAt(14).speed = state.player15.speed;
 	
 }
-
+*/
