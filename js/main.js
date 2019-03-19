@@ -5,6 +5,7 @@ var socket = io.connect("http://24.16.255.56:8888");
 socket.on("load", function (data) {
     console.log('loaded data');
     console.log(data);
+	loadState(data.data);
   
 });
 
@@ -15,14 +16,14 @@ var text = document.getElementById("text");
   saveButton.onclick = function () {
     console.log("save");
     text.innerHTML = "Saved."
-    socket.emit("save", {studentname: "Moneer Marouf", statename: "gamestate-1", data: "bye"});
+    socket.emit("save", {studentname: "Moneer Marouf", statename: "gamestate-1", data: saveState()});
 	};
 	
 	loadButton.onclick = function () {
     console.log("load");
     text.innerHTML = "Loaded."
     socket.emit("load", { studentname: "Moneer Marouf", statename: "gamestate-1"});
-        loadState(data.data);
+       // loadState(data.data);
     };
 
 /*if (saveKey.isDown) {
